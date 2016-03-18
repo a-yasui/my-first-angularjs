@@ -1,0 +1,44 @@
+<div>
+
+    <form ng-submit="submitComment()"> <!-- ng-submit will disable the default form action and use our function -->
+
+        <!-- AUTHOR -->
+        <div class="form-group">
+            <input type="text" class="form-control input-sm" name="title"
+                   ng-model="blogData.title" placeholder="Title">
+        </div>
+
+        <!-- Slag TEXT -->
+        <div class="form-group">
+            <input type="text" class="form-control input-lg" name="slag"
+                   ng-model="blogData.slag" placeholder="この記事を一言でいうなら！！">
+        </div>
+
+
+        <!-- Slag TEXT -->
+        <div class="form-group">
+            <textarea name="header" ng-model="blogData.header" class="form-control input-lg"></textarea>
+        </div>
+
+        <!-- SUBMIT BUTTON -->
+        <div class="form-group text-right">
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </div>
+    </form>
+
+    <!-- LOADING ICON =============================================== -->
+    <!-- show loading icon if the loading variable is set to true -->
+    <p class="text-center" ng-show="loading"><span class="fa fa-meh-o fa-5x fa-spin"></span></p>
+
+    <!-- THE COMMENTS =============================================== -->
+    <!-- hide these comments if the loading variable is true -->
+    <div class="blog" ng-hide="loading" ng-repeat="blog in blogs">
+        <h3>Blog
+            <small>{{ blog.title }}</small>
+        </h3>
+        <h4>{{ blog.slag }}</h4>
+        <p>{{ blog.header }}</p>
+
+        <p><a href="#" ng-click="deleteBlog(blog.id)" class="text-muted">Delete</a></p>
+    </div>
+</div>
